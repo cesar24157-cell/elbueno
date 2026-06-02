@@ -1,48 +1,149 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌿 Lavanda Escolar</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1587135942456-8c3f2c8c9a5d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+        .card-hover:hover { transform: translateY(-8px); transition: all 0.3s; }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>🌸 Jardín Escolar de Lavanda</h1>
-        <p>Proyecto Educativo - Bienestar y Naturaleza</p>
+<body class="bg-gradient-to-br from-purple-50 to-pink-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 text-2xl font-bold text-purple-700">
+                🌸 Lavanda Escolar
+            </div>
+            <div class="flex gap-6 items-center">
+                <a href="#clima" class="hover:text-purple-600">Clima</a>
+                <a href="#recetas" class="hover:text-purple-600">Recetas</a>
+                <a href="#polinizadores" class="hover:text-purple-600">Polinizadores</a>
+                <a href="#opiniones" class="hover:text-purple-600">Opiniones</a>
+                <button onclick="mostrarAuthModal()" class="bg-purple-600 text-white px-5 py-2 rounded-full hover:bg-purple-700">
+                    <i class="fas fa-user"></i> Iniciar Sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-bg text-white py-24 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl font-bold mb-4">Jardín Escolar de Lavanda</h1>
+            <p class="text-2xl mb-8">Conectando estudiantes con la naturaleza y el bienestar</p>
+            <div class="flex justify-center gap-4">
+                <button onclick="document.getElementById('recetas').scrollIntoView({behavior:'smooth'})" 
+                        class="bg-white text-purple-700 px-8 py-3 rounded-full font-semibold hover:bg-purple-100">
+                    Ver Recetas
+                </button>
+            </div>
+        </div>
     </header>
 
-    <section>
-        <h2>☀️ Clima del Jardín</h2>
-        <div id="clima">Cargando clima...</div>
+    <!-- Clima -->
+    <section id="clima" class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-purple-700 mb-6">☀️ Clima del Jardín</h2>
+        <div id="clima-info" class="bg-white rounded-2xl shadow p-8 text-center">
+            Cargando clima...
+        </div>
     </section>
 
-    <section>
-        <h2>📋 Recetas con Lavanda</h2>
-        <div id="recetas">Cargando recetas...</div>
+    <!-- Recetas -->
+    <section id="recetas" class="max-w-6xl mx-auto px-6 py-12 bg-white">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold text-purple-700">🍪 Recetas con Lavanda</h2>
+            <button onclick="mostrarFormularioReceta()" 
+                    class="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700">
+                <i class="fas fa-plus"></i> Agregar Receta
+            </button>
+        </div>
+
+        <div id="lista-recetas" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <section>
-        <h2>🐝 Polinizadores</h2>
-        <div id="polinizadores">Cargando...</div>
+    <!-- Polinizadores -->
+    <section id="polinizadores" class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-purple-700 mb-6">🐝 Nuestros Polinizadores</h2>
+        <div id="polinizadores-content" class="grid md:grid-cols-3 gap-6"></div>
     </section>
 
-    <section>
-        <h2>💭 Opiniones de Estudiantes</h2>
-        <div id="opiniones">Cargando opiniones...</div>
+    <!-- Opiniones -->
+    <section id="opiniones" class="max-w-6xl mx-auto px-6 py-12 bg-purple-50">
+        <h2 class="text-3xl font-bold text-purple-700 mb-8">💭 Opiniones de la Comunidad</h2>
+        <div id="lista-opiniones" class="space-y-6"></div>
+
+        <!-- Formulario de Opinión -->
+        <div class="mt-12 bg-white p-8 rounded-3xl shadow">
+            <h3 class="text-2xl font-semibold mb-6">Deja tu opinión</h3>
+            <form id="formOpinion" class="space-y-4">
+                <input type="text" id="nombre" placeholder="Tu nombre" required
+                       class="w-full p-4 border rounded-2xl focus:outline-none focus:border-purple-500">
+                <textarea id="comentario" placeholder="¿Qué opinas del proyecto?" rows="4" required
+                          class="w-full p-4 border rounded-2xl focus:outline-none focus:border-purple-500"></textarea>
+                <button type="submit" 
+                        class="bg-purple-600 text-white px-10 py-4 rounded-2xl hover:bg-purple-700 text-lg font-medium">
+                    Publicar Opinión
+                </button>
+            </form>
+        </div>
     </section>
 
-    <section>
-        <h2>Deja tu Comentario</h2>
-        <form id="formOpinion">
-            <input type="text" id="nombre" placeholder="Tu nombre" required>
-            <textarea id="comentario" placeholder="¿Qué opinas del proyecto?" required></textarea>
-            <button type="submit">Enviar Opinión</button>
-        </form>
-    </section>
+    <!-- Footer -->
+    <footer class="bg-purple-800 text-white py-12 text-center">
+        <p class="text-lg">🌿 Proyecto Educativo - Jardín Escolar de Lavanda</p>
+        <p class="mt-2">Hecho con amor por estudiantes y la naturaleza</p>
+    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <!-- Modal Auth -->
+    <div id="authModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl p-8 w-full max-w-md">
+            <h2 id="modalTitle" class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+            
+            <div id="loginForm">
+                <input type="email" id="email" placeholder="Correo electrónico" class="w-full p-4 border rounded-2xl mb-4">
+                <input type="password" id="password" placeholder="Contraseña" class="w-full p-4 border rounded-2xl mb-6">
+                <button onclick="login()" class="w-full bg-purple-600 text-white py-4 rounded-2xl">Ingresar</button>
+                <p class="text-center mt-4">¿No tienes cuenta? 
+                    <span onclick="cambiarAModalRegistro()" class="text-purple-600 cursor-pointer">Regístrate</span>
+                </p>
+            </div>
+
+            <div id="registerForm" class="hidden">
+                <input type="text" id="regNombre" placeholder="Nombre completo" class="w-full p-4 border rounded-2xl mb-4">
+                <input type="email" id="regEmail" placeholder="Correo electrónico" class="w-full p-4 border rounded-2xl mb-4">
+                <input type="password" id="regPassword" placeholder="Contraseña" class="w-full p-4 border rounded-2xl mb-6">
+                <button onclick="registrar()" class="w-full bg-purple-600 text-white py-4 rounded-2xl">Registrarse</button>
+                <p class="text-center mt-4">¿Ya tienes cuenta? 
+                    <span onclick="cambiarAModalLogin()" class="text-purple-600 cursor-pointer">Inicia sesión</span>
+                </p>
+            </div>
+
+            <button onclick="cerrarModal()" class="mt-6 text-gray-500 hover:text-gray-700">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal Nueva Receta -->
+    <div id="recetaModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl p-8 w-full max-w-lg">
+            <h3 class="text-2xl font-bold mb-6">Nueva Receta con Lavanda</h3>
+            <form id="formReceta" class="space-y-4">
+                <input type="text" id="recetaTitulo" placeholder="Título de la receta" required class="w-full p-4 border rounded-2xl">
+                <textarea id="recetaDescripcion" placeholder="Ingredientes y preparación" rows="6" required class="w-full p-4 border rounded-2xl"></textarea>
+                <button type="submit" class="w-full bg-purple-600 text-white py-4 rounded-2xl">Publicar Receta</button>
+            </form>
+            <button onclick="cerrarModalReceta()" class="mt-4 text-gray-500">Cancelar</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
