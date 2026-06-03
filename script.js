@@ -12,13 +12,20 @@ const polinizadores = [
 ];
 
 // Cargar datos guardados
-function loadData() {
-    recetas = JSON.parse(localStorage.getItem('recetasLavanda')) || [];
-    opiniones = JSON.parse(localStorage.getItem('opinionesLavanda')) || [];
-    renderRecetas();
-    renderOpiniones();
-}
+async function loadData() {
+    try {
+        const recetasRes = await fetch("http://localhost:3000/recetas");
+        recetas = await recetasRes.json();
 
+        const opinionesRes = await fetch("http://localhost:3000/opiniones");
+        opiniones = await opinionesRes.json();
+
+        renderRecetas();
+        renderOpiniones();
+    } catch (error) {
+        console.error(error);
+    }
+}
 // Renderizar Recetas
 function renderRecetas() {
     const container = document.getElementById('lista-recetas');
