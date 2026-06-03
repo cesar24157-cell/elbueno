@@ -26,6 +26,7 @@
 </div>
             <div class="flex gap-6 items-center">
                 <a href="#clima" class="hover:text-purple-600">Clima</a>
+                <a href="#redes" class="hover:text-purple-600">Redes</a>
                 <a href="#recetas" class="hover:text-purple-600">Recetas</a>
                 <a href="#polinizadores" class="hover:text-purple-600">Polinizadores</a>
                 <a href="#opiniones" class="hover:text-purple-600">Opiniones</a>
@@ -51,7 +52,7 @@
     </header>
 
     <!-- Clima -->
-    <section id="clima" class="max-w-6xl mx-auto px-6 py-12">
+    <section id="clima" class="max-w-6xl mx-auto px-6 py-20">
         <h2 class="text-3xl font-bold text-purple-700 mb-6">☀️ Clima del Jardín</h2>
         <div id="clima-info" class="bg-white rounded-2xl shadow p-8 text-center">
             Cargando clima...
@@ -59,7 +60,7 @@
     </section>
 
     <!-- Recetas -->
-    <section id="recetas" class="max-w-6xl mx-auto px-6 py-12 bg-white">
+   <section id="recetas" class="max-w-6xl mx-auto px-6 py-20 bg-white">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-bold text-purple-700">🍪 Recetas con Lavanda</h2>
             <button onclick="mostrarFormularioReceta()" 
@@ -72,13 +73,13 @@
     </section>
 
     <!-- Polinizadores -->
-    <section id="polinizadores" class="max-w-6xl mx-auto px-6 py-12">
+    <section id="polinizadores" class="max-w-6xl mx-auto px-6 py-20">
         <h2 class="text-3xl font-bold text-purple-700 mb-6">🐝 Nuestros Polinizadores</h2>
         <div id="polinizadores-content" class="grid md:grid-cols-3 gap-6"></div>
     </section>
-
+    
     <!-- Opiniones -->
-    <section id="opiniones" class="max-w-6xl mx-auto px-6 py-12 bg-purple-50">
+    <section id="opiniones" class="max-w-6xl mx-auto px-6 py-20 bg-purple-50">
         <h2 class="text-3xl font-bold text-purple-700 mb-8">💭 Opiniones de la Comunidad</h2>
         <div id="lista-opiniones" class="space-y-6"></div>
 
@@ -97,7 +98,47 @@
             </form>
         </div>
     </section>
+<!-- Redes Sociales -->
+<section id="redes" class="py-20 bg-gradient-to-r from-purple-700 to-pink-600 text-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        
+        <h2 class="text-4xl font-bold mb-6">
+            📱 Síguenos en Redes Sociales
+        </h2>
 
+        <p class="text-xl mb-10">
+            Conoce las novedades de nuestro Jardín Escolar de Lavanda
+        </p>
+
+        <div class="flex justify-center gap-8 text-5xl">
+
+            <a href="https://facebook.com"
+               target="_blank"
+               class="hover:scale-125 transition duration-300">
+                <i class="fab fa-facebook"></i>
+            </a>
+
+            <a href="https://instagram.com"
+               target="_blank"
+               class="hover:scale-125 transition duration-300">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://youtube.com"
+               target="_blank"
+               class="hover:scale-125 transition duration-300">
+                <i class="fab fa-youtube"></i>
+            </a>
+
+            <a href="https://tiktok.com"
+               target="_blank"
+               class="hover:scale-125 transition duration-300">
+                <i class="fab fa-tiktok"></i>
+            </a>
+
+        </div>
+    </div>
+</section>
     <!-- Footer -->
     <footer class="bg-purple-800 text-white py-12 text-center">
         <p class="text-lg">🌿 Proyecto Educativo - Jardín Escolar de Lavanda</p>
