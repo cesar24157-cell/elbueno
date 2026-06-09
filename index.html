@@ -15,6 +15,7 @@
         .card-hover:hover { transform: translateY(-8px); transition: all 0.3s; }
     </style>
 </head>
+    <body class="bg-gradient-to-br from-purple-50 to-pink-50 text-gray-800">
     <!-- Navbar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -25,6 +26,7 @@
             <div class="flex gap-6 items-center">
                 <a href="#clima" class="hover:text-purple-600">Clima</a>
                 <a href="#bitacora" class="hover:text-purple-600">Bitácora</a>
+                <a href="#cronograma" class="hover:text-purple-600">Cronograma</a>
                 <a href="#recetas" class="hover:text-purple-600">Recetas</a>
                 <a href="#polinizadores" class="hover:text-purple-600">Polinizadores</a>
                 <a href="#opiniones" class="hover:text-purple-600">Opiniones</a>
@@ -176,8 +178,52 @@
     </footer>
 
     <!-- Modales (sin cambios) -->
-    <div id="authModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">...</div>
+    <div id="authModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-2xl w-96">
+        <h2 class="text-2xl font-bold mb-4">Iniciar Sesión</h2>
+
+        <input type="text" id="usuario"
+               placeholder="Usuario"
+               class="w-full border p-3 rounded mb-3">
+
+        <input type="password" id="password"
+               placeholder="Contraseña"
+               class="w-full border p-3 rounded mb-3">
+
+        <button onclick="login()"
+                class="w-full bg-purple-600 text-white p-3 rounded">
+            Entrar
+        </button>
+
+        <button onclick="cerrarModal()"
+                class="w-full mt-2 bg-gray-300 p-3 rounded">
+            Cancelar
+        </button>
+    </div>
+</div>
     <div id="recetaModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">...</div>
+        <script>
+function mostrarAuthModal() {
+    document.getElementById("authModal").classList.remove("hidden");
+}
+
+function cerrarModal() {
+    document.getElementById("authModal").classList.add("hidden");
+}
+
+function login() {
+    const usuario = document.getElementById("usuario").value;
+    const password = document.getElementById("password").value;
+
+    if (usuario === "admin" && password === "Lavanda2026") {
+        alert("Bienvenido Administrador");
+        localStorage.setItem("admin", "true");
+        cerrarModal();
+    } else {
+        alert("Usuario o contraseña incorrectos");
+    }
+}
+</script>
 
     <script src="script.js"></script>
 </body>
