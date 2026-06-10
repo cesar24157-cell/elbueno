@@ -100,15 +100,15 @@ function registrar() {
 }
 
 function login() {
-    const email = document.getElementById('email').value.trim();
-    const savedUser = JSON.parse(localStorage.getItem('currentUserLavanda'));
+    const usuario = document.getElementById('usuario').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    if (savedUser && savedUser.email === email) {
-        currentUser = savedUser;
-        alert(`¡Bienvenido de nuevo, ${currentUser.nombre}!`);
+    if (usuario === "admin" && password === "Lavanda2026") {
+        alert("¡Bienvenido Administrador!");
+        localStorage.setItem("admin", "true");
         cerrarModal();
     } else {
-        alert("Usuario no encontrado o datos incorrectos");
+        alert("Usuario o contraseña incorrectos");
     }
 }
 
