@@ -239,25 +239,71 @@
     <!-- Modales (sin cambios) -->
     <div id="authModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-2xl w-96">
-        <h2 class="text-2xl font-bold mb-4">Iniciar Sesión</h2>
 
-        <input type="text" id="usuario"
-               placeholder="Usuario"
-               class="w-full border p-3 rounded mb-3">
+        <h2 id="modalTitle" class="text-2xl font-bold mb-4">
+            Iniciar Sesión
+        </h2>
 
-        <input type="password" id="password"
-               placeholder="Contraseña"
-               class="w-full border p-3 rounded mb-3">
+        <!-- LOGIN -->
+        <div id="loginForm">
 
-        <button onclick="login()"
-                class="w-full bg-purple-600 text-white p-3 rounded">
-            Entrar
-        </button>
+            <input type="text"
+                   id="usuario"
+                   placeholder="Usuario o correo"
+                   class="w-full border p-3 rounded mb-3">
+
+            <input type="password"
+                   id="password"
+                   placeholder="Contraseña"
+                   class="w-full border p-3 rounded mb-3">
+
+            <button onclick="login()"
+                    class="w-full bg-purple-600 text-white p-3 rounded">
+                Entrar
+            </button>
+
+            <button onclick="mostrarRegistro()"
+                    class="w-full mt-2 bg-green-600 text-white p-3 rounded">
+                Registrarse
+            </button>
+
+        </div>
+
+        <!-- REGISTRO -->
+        <div id="registroForm" class="hidden">
+
+            <input type="text"
+                   id="regNombre"
+                   placeholder="Nombre"
+                   class="w-full border p-3 rounded mb-3">
+
+            <input type="email"
+                   id="regEmail"
+                   placeholder="Correo"
+                   class="w-full border p-3 rounded mb-3">
+
+            <input type="password"
+                   id="regPassword"
+                   placeholder="Contraseña"
+                   class="w-full border p-3 rounded mb-3">
+
+            <button onclick="registrar()"
+                    class="w-full bg-purple-600 text-white p-3 rounded">
+                Crear Cuenta
+            </button>
+
+            <button onclick="mostrarLogin()"
+                    class="w-full mt-2 bg-gray-300 p-3 rounded">
+                Volver
+            </button>
+
+        </div>
 
         <button onclick="cerrarModal()"
-                class="w-full mt-2 bg-gray-300 p-3 rounded">
-            Cancelar
+                class="w-full mt-3 bg-red-500 text-white p-3 rounded">
+            Cerrar
         </button>
+
     </div>
 </div>
     <div id="recetaModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">...</div>
