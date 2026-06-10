@@ -261,29 +261,30 @@
     </div>
 </div>
     <div id="recetaModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">...</div>
-        <script>
-function mostrarAuthModal() {
-    document.getElementById("authModal").classList.remove("hidden");
-}
-
-function cerrarModal() {
-    document.getElementById("authModal").classList.add("hidden");
-}
-
-function login() {
-    const usuario = document.getElementById("usuario").value;
-    const password = document.getElementById("password").value;
-
-    if (usuario === "admin" && password === "Lavanda2026") {
-        alert("Bienvenido Administrador");
-        localStorage.setItem("admin", "true");
-        cerrarModal();
-    } else {
-        alert("Usuario o contraseña incorrectos");
+    <script>
+    function mostrarAuthModal() {
+        document.getElementById("authModal").classList.remove("hidden");
     }
-}
-</script>
-
+    
+    function cerrarModal() {
+        document.getElementById("authModal").classList.add("hidden");
+    }
+    
+    function login() {
+        alert("La función login se ejecutó");
+    
+        const usuario = document.getElementById("usuario").value;
+        const password = document.getElementById("password").value;
+    
+        if (usuario === "admin" && password === "Lavanda2026") {
+            alert("Bienvenido Administrador");
+            localStorage.setItem("admin", "true");
+            cerrarModal();
+        } else {
+            alert("Usuario o contraseña incorrectos");
+        }
+    }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
